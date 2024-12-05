@@ -1,0 +1,57 @@
+{
+    "params":
+    {
+        "r": 6,
+        "lora_alpha": 8,
+        "lora_dropout": 0.05,
+
+        "lr_scheduler_type" : "cosine",
+        "max_seq_length" : 1024,
+        "output_dir" : "output",
+        "train_batch_size" : 1,
+        "eval_batch_size" : 1,
+        "epoch" : 3,
+        "learning_rate" : "2e-5",
+        "weight_decay" : 0.01,
+
+        "gradient_accumulation_steps" : 1,
+        "fp16" : false,
+        "fp16_full_eval" : false,
+        "warmup_ratio" : 0.0,
+
+        "logging_steps" : 100,
+        "save_strategy" : "epoch",
+
+        "do_eval" : true,
+        "eval_strategy" : "epoch",
+        "eval_steps" : null,
+        "load_best_model_at_end" : false,
+        "metric_for_best_model" : "eval_loss",
+        "greater_is_better" : false
+    },
+
+    "model" : 
+    {
+        "name" : "beomi/gemma-ko-2b"
+    },
+
+    "data" :
+    {
+        "data_path" : "../data",
+        "train_file" : "train.csv",
+        "dev_file" : null,
+        "test_file" : "test.csv",
+        "filtering_input_ids_length": 1024,
+        "tokenizer_num_procs": 4,
+        "use_4-choices_prompt": false,
+        "test_size": 0.1
+    },
+
+    "experiment" :
+    {
+        "output_dir" : "experiments",
+        "last_eval_strategy" : "evaluate",
+        "save_train_dataset" : false,
+        "save_eval_dataset" : false
+    }
+}
