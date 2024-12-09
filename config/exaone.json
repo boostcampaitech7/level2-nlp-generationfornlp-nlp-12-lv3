@@ -1,0 +1,57 @@
+{
+    "params":
+    {
+        "r": 6,
+        "lora_alpha": 8,
+        "lora_dropout": 0.05,
+
+        "lr_scheduler_type" : "cosine_with_restarts",
+        "max_seq_length" : 1024,
+        "output_dir" : "output",
+        "train_batch_size" : 1,
+        "eval_batch_size" : 1,
+        "epoch" : 5,
+        "learning_rate" : "2e-5",
+        "weight_decay" : 0.01,
+
+        "gradient_accumulation_steps" : 4,
+        "fp16" : true,
+        "fp16_full_eval" : true,
+        "warmup_ratio" : 0.1,
+
+        "logging_steps" : 100,
+        "save_strategy" : "steps",
+
+        "do_eval" : true,
+        "eval_strategy" : "steps",
+        "eval_steps" : 500,
+        "load_best_model_at_end" : true,
+        "metric_for_best_model" : "eval_loss",
+        "greater_is_better" : false
+    },
+
+    "model" : 
+    {
+        "name" : "LGAI-EXAONE/EXAONE-3.0-7.8B-Instruct"
+    },
+
+    "data" :
+    {
+        "data_path" : "../data",
+        "train_file" : "train.csv",
+        "dev_file" : null,
+        "test_file" : "test.csv",
+        "filtering_input_ids_length": -1,
+        "tokenizer_num_procs": 4,
+        "use_4-choices_prompt": false,
+        "test_size": 0.1
+    },
+
+    "experiment" :
+    {
+        "output_dir" : "experiments",
+        "last_eval_strategy" : "evaluate",
+        "save_train_dataset" : false,
+        "save_eval_dataset" : false
+    }
+}
